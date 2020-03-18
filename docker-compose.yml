@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: app-front
+    image: nginx
+    restart: always
+    ports:
+      - '8080:80'
+      #- '9000:9000'
+    volumes:
+      - '.:/var/www/html'
+      - './docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
+      - '/tmp/${APP_NAME}/nginx:/var/log/nginx'
+    env_file:
+      - '.env'
+    networks:
+      - app-network
+    depends_on:
+      - 'php-fpm'
+
+
+  php-fpm:
+    container_name: app-php-fpm
+    restart: always
+    build:
+      context: ./
+      dockerfile: './docker/php-fpm/build/Dockerfile'
+      args: 
+      - INSTALL_COMPOSER=${PHP_INSTALL_COMPOSER}
+      - INSTALL_NODE=${PHP_INSTALL_NODE}
+      - INSTALL_XDEBUG=${PHP_INSTALL_XDEBUG}
+      - INSTALL_ORACLE=${PHP_INSTALL_ORACLE}
+      - INSTALL_POSTGRES=${PHP_INSTALL_POSTGRES}
+      - INSTALL_MYSQL=${PHP_INSTALL_MYSQL}
+    #ports:
+      #- '9000:9000'
+    volumes:
+      - '.:/var/www/html'
+      - './docker/xdebug/php-dev.ini:/usr/local/etc/php/conf.d/php-dev.ini'
+      - '/tmp/${APP_NAME}/php-fpm:/var/log/xdebug'
+    environment:
+      - XDEBUG_CONFIG="remote_host=${HOST_IP}"
+      - PHP_IDE_CONFIG="serverName=${HOST_SERVER_NAME}"
+    env_file:
+      - '.env'
+    networks:
+      - app-network
+    
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  mysqldata:
