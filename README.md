@@ -29,6 +29,7 @@ docker-compose --build
 docker-compose up
 
 3.0 - configurar o vscode para integrar com xdebug
+
 --instalar vscode
 sudo apt-get install code1.43
 
