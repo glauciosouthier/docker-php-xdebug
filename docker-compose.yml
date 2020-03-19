@@ -21,7 +21,7 @@ services:
 
 
   php-fpm:
-    container_name: app-php-fpm
+    container_name: php-fpm
     restart: always
     build:
       context: ./
@@ -55,11 +55,11 @@ services:
       context: .
       dockerfile: ./docker/postgres/build/Dockerfile
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${PGQSL_DB_NAME}
+      - POSTGRES_USER=${PGQSL_USER}
+      - POSTGRES_PASSWORD=${PGQSL_PASSWORD}
     volumes:
-     # - "./docker/postgres/init/:/docker-entrypoint-initdb.d/"
+     # - "${PGQSL_INIT}:/docker-entrypoint-initdb.d/"
       - "pgdata:/var/lib/postgresql/data/"
     env_file:
       - '.env'
@@ -77,8 +77,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASS}
     volumes:
-      - "mysqldata:/var/lib/mysql"
-      - "./docker/mysql/init:/docker-entrypoint-initdb.d"
+      - 'mysqldata:/var/lib/mysql'
+      - '${MYSQL_INIT}:/docker-entrypoint-initdb.d'
     env_file:
       - '.env'
     networks:

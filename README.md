@@ -94,3 +94,16 @@ sudo apt-get install code1.43
 # instale a extensão "Xdebug Hepler" no seu navegador e deixe-a ativada (irá manter o cookie : XDEBUG_SESSION)
 
 # coloque um breakpoint e teste a aplicação (localhost:8080).
+
+--comandos uteis:
+
+docker stop $(docker ps -aq)
+
+docker rmi -f $(docker images -qa)
+
+docker-compose up --build -d
+
+docker-compose down --volumes
+
+docker system prune
+

@@ -12,7 +12,7 @@
  <body>
  
  <?php 
-  echo "<h1 class=`bd-title`>Blog</h1>";
+  echo "<h1 class='bd-title'>Blog</h1>";
  $db= mysqli_connect('mysql', 'root', 'root','blog');
  if (!$db) {
     echo "Não foi possível selecionar o banco de dados.".mysqli_error($db) ;
@@ -21,8 +21,8 @@
   $sql = "SELECT * FROM post ";
   $result = mysqli_query($db, $sql);
     if($result){
-        echo '<table class="table table-bordered">';
-        echo `<thead class="thead-light">`;
+        echo '<table class="table table-bordered table-hover ">';
+        echo '<thead class="thead-light">';
             echo ' <th>id</th>';
             echo "<th>title</th>";
             echo "<th>content</th>";
