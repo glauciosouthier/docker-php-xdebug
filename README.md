@@ -1,7 +1,16 @@
 # docker-php-xdebug
-ambiente de desenvolvimento em container
+# ambiente de desenvolvimento em container
 
-1.0 -- instalar o docker e o docker-compose
+# instale o git (ou use uma IDE para clonar este projeto):
+
+git clone https://github.com/glauciosouthier/docker-php-xdebug.git
+
+cd docker-php-xdebug
+
+sudo chmod 755 -R .
+
+
+# 1.0 -- instalar o docker e o docker-compose
 
 
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
@@ -20,7 +29,6 @@ sudo add-apt-repository \
     
 sudo apt update -y
 
-
 sudo apt-get install docker-ce
 
 sudo apt-get  install docker-compose
@@ -29,32 +37,35 @@ sudo gpasswd -a "${USER}" docker
 
 sudo reboot
 
-2.0 fazer o build do container
+# 2.0 fazer o build do container
 
-configurar os modulos desejados no arquivo .env (habilitar cliente oracle e xdebug)
+# configurar os modulos desejados no arquivo .env (habilitar cliente oracle e xdebug)
+
+# a variavel PHP_APP_FOLDER aponta para a pasta com o código PHP (default é "." mas pode apontar para o caminho absoluto da aplicação, ex: /home/seu_usuario/git/appXYZ/)
+
 
 docker-compose --build
 
 docker-compose up
 
 
-3.0 - configurar o vscode para integrar com xdebug
+# 3.0 - configurar o vscode para integrar com xdebug
 
---instalar vscode
+# instalar vscode
 
 sudo apt-get install code1.43
 
 
-instale os plugins PHPDebug, PHPIntelliSense, Docker
+# instale os plugins PHPDebug, PHPIntelliSense, Docker
 
 
-Menu: Run > Start Debugging > PHP
+# Menu: Run > Start Debugging > PHP
 
 
-verifique se estÃ¡ marcado Listen for Xdebug
+# verifique se está marcado "Listen for Xdebug"
 
 
-abra o arquivo em ".vscode/launch.json"
+# abra o arquivo em ".vscode/launch.json"
 
 
     {
@@ -79,7 +90,7 @@ abra o arquivo em ".vscode/launch.json"
         }
         
 
-menu : Run > Start Debugging
+# menu : Run > Start Debugging
+# instale a extensão "Xdebug Hepler" no seu navegador e deixe-a ativada (irá manter o cookie : XDEBUG_SESSION)
 
-
-coloque um breakpoint e teste.
+# coloque um breakpoint e teste a aplicação (localhost:8080).

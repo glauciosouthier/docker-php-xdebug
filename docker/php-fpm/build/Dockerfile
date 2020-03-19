@@ -34,7 +34,7 @@ RUN if [ ${INSTALL_POSTGRES} = true ] ; then \
 
 ARG INSTALL_MYSQL=false
 RUN if [ ${INSTALL_MYSQL} = true ] ; then \
-    docker-php-ext-install pdo mysql \
+    docker-php-ext-install pdo mysqli \
 ;fi
 
 ARG INSTALL_ORACLE=false
@@ -64,7 +64,7 @@ RUN if [ ${INSTALL_NODE} = true ] ; then \
 ;fi
 
 WORKDIR /var/www/html
-COPY . /var/www/html
+COPY ${APP_FOLDER} /var/www/html
 
 
 RUN rm -rf /var/www/html/data/cache/
