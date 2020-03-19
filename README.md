@@ -41,7 +41,7 @@ sudo reboot
 
 # configurar os modulos desejados no arquivo .env (habilitar cliente oracle e xdebug)
 
-# a variavel PHP_APP_FOLDER aponta para a pasta com o cÛdigo PHP (default È "." mas pode apontar para o caminho absoluto da aplicaÁ„o, ex: /home/seu_usuario/git/appXYZ/)
+# a variavel PHP_APP_FOLDER aponta para a pasta com o c√≥digo PHP (default √© "." mas pode apontar para o caminho absoluto da aplica√ß√£o, ex: /home/seu_usuario/git/appXYZ/)
 
 
 docker-compose --build
@@ -62,7 +62,7 @@ sudo apt-get install code1.43
 # Menu: Run > Start Debugging > PHP
 
 
-# verifique se est· marcado "Listen for Xdebug"
+# verifique se est√° marcado "Listen for Xdebug"
 
 
 # abra o arquivo em ".vscode/launch.json"
@@ -91,9 +91,9 @@ sudo apt-get install code1.43
         
 
 # menu : Run > Start Debugging
-# instale a extens„o "Xdebug Hepler" no seu navegador e deixe-a ativada (ir· manter o cookie : XDEBUG_SESSION)
+# instale a extens√£o "Xdebug Hepler" no seu navegador e deixe-a ativada (ir√° manter o cookie : XDEBUG_SESSION)
 
-# coloque um breakpoint e teste a aplicaÁ„o (localhost:8080).
+# coloque um breakpoint e teste a aplica√ß√£o (localhost:8080).
 
 --comandos uteis:
 
@@ -107,3 +107,4 @@ docker-compose down --volumes
 
 docker system prune
 
+# VC pode conectar com o DBeaver (ou outro cliente de banco) diretamente nos bancos que est√£o em container, ex: localhost:3306 pois a porta exportada no docker-compose.yaml  (ports: - "3306:3306")
