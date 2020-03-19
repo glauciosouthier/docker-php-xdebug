@@ -58,6 +58,11 @@ sudo apt-get install code1.43
 
 # instale os plugins PHPDebug, PHPIntelliSense, Docker
 
+-- Obs: para o PHPIntelliSense funcionar vc precisa do PHP7~ instalado e ativo
+
+-- caso tenha outro php ativo pode apontar o php 7 nas configurações 
+
+(inclua em settings.json : "php.executablePath": "/usr/bin/php7.4") 
 
 # Menu: Run > Start Debugging > PHP
 
